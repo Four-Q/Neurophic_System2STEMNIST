@@ -78,11 +78,14 @@ def prepare_output_directory(project_root, experiment_name, overwrite):
         raise ValueError(f"实验输出路径不安全：{experiment_dir}")
 
     if experiment_dir.exists() and any(experiment_dir.iterdir()):
-        if not overwrite:
+        has_checkpoint = (experiment_dir / "best_model.pt").is_file()
+        if not overwrite and has_checkpoint:
             raise FileExistsError(
                 f"实验目录已有内容：{experiment_dir}。"
                 "确认需要重跑时，在 Notebook 中设置 OVERWRITE_OUTPUT=True。"
             )
+        if not overwrite:
+            print(f"检测到没有 checkpoint 的中断输出，将自动清理：{experiment_dir}")
         shutil.rmtree(experiment_dir)
 
     data_dir = experiment_dir / "data"
@@ -300,4 +303,3 @@ def run_experiment(data_kind, project_root=None, overwrite_output=False):
         "data_dir": data_dir,
         "figure_dir": figure_dir,
     }
-

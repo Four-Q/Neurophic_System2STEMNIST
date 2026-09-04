@@ -2,8 +2,15 @@
 
 from numbers import Real
 
+import numpy as np
 import torch
 from torch import nn
+
+# SpikingJelly 0.0.0.0.14 的 CuPy 内核仍检查 np.int；该别名在
+# NumPy 2 中被删除。仅补回等价的 Python int，避免改动第三方包。
+if "int" not in np.__dict__:
+    setattr(np, "int", int)
+
 from spikingjelly.activation_based import functional, layer, neuron, surrogate
 
 
@@ -202,4 +209,3 @@ class STEMNIST_CSNN(nn.Module):
             f"backend={self.backend!r}, normalization='none', "
             "readout='spatiotemporal_rate'"
         )
-

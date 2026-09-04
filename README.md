@@ -52,6 +52,8 @@ jupyter lab
 
 如果镜像已预装匹配的 CUDA 版 PyTorch，可直接安装 `requirements.txt`，但应先确认 `torch.cuda.is_available()` 为 `True`。
 
+`requirements.txt` 将 NumPy 固定为 `1.26.4`，以兼容 SpikingJelly `0.0.0.0.14` 的 CuPy 内核。模型入口同时包含针对现有 NumPy 2 环境的最小兼容处理，因此已经建好的远程环境也可以直接运行；重新创建环境时仍建议使用锁定版本。
+
 ## 运行顺序
 
 1. 运行 `src/data/prepare_pressure_data.ipynb`，从原始 ZIP 重建固定的 train/val/test 压力数据。
@@ -95,4 +97,3 @@ python tests/smoke_test.py
 ```
 
 该检查会验证两个 ZIP 的摘要、Notebook 语法、模型类名、参数量和 CPU 前向输出形状。
-
