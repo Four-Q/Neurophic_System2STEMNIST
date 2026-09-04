@@ -1,0 +1,2 @@
+﻿split,checkpoint_epoch,best_val_accuracy,test_loss,test_accuracy,correct,samples,samples_per_second,lif1_firing_rate,lif2_firing_rate,output_lif_firing_rate
+test,4,0.10043290043290043,3.2146649249188313,0.08225108225108226,95,1155,1331.9298156137634,0.2458943156452922,0.1259195699320211,0.07341636888908618
