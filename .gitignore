@@ -1,0 +1,17 @@
+# 由数据准备 Notebook 解压或生成的派生数据
+data/pressure/
+data/spike/
+data/.pressure-building-*/
+data/.spike-extracting/
+
+
+
+# Python、Jupyter 与编辑器缓存
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+.env
+.vscode/
+.idea/
+
