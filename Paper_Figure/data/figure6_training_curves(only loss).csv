@@ -1,0 +1,403 @@
+dataset,split,epoch,loss,plotted_as_test_marker
+Spike-Encoded,Train,1,3.50645111,False
+Spike-Encoded,Train,2,3.133287917,False
+Spike-Encoded,Train,3,2.706298738,False
+Spike-Encoded,Train,4,2.408754276,False
+Spike-Encoded,Train,5,2.506847171,False
+Spike-Encoded,Train,6,2.2570972,False
+Spike-Encoded,Train,7,2.066173071,False
+Spike-Encoded,Train,8,1.622280844,False
+Spike-Encoded,Train,9,1.304461387,False
+Spike-Encoded,Train,10,1.064147202,False
+Spike-Encoded,Train,11,0.9039908613,False
+Spike-Encoded,Train,12,0.780890991,False
+Spike-Encoded,Train,13,0.6844809905,False
+Spike-Encoded,Train,14,0.6119475809,False
+Spike-Encoded,Train,15,0.6028401844,False
+Spike-Encoded,Train,16,0.5453158971,False
+Spike-Encoded,Train,17,0.4933557061,False
+Spike-Encoded,Train,18,0.4774895097,False
+Spike-Encoded,Train,19,0.4096393875,False
+Spike-Encoded,Train,20,0.4007664838,False
+Spike-Encoded,Train,21,0.3528438986,False
+Spike-Encoded,Train,22,0.341992029,False
+Spike-Encoded,Train,23,0.3232483476,False
+Spike-Encoded,Train,24,0.3052328531,False
+Spike-Encoded,Train,25,0.2802792806,False
+Spike-Encoded,Train,26,0.2659296096,False
+Spike-Encoded,Train,27,0.2347025289,False
+Spike-Encoded,Train,28,0.2323345234,False
+Spike-Encoded,Train,29,0.2150469665,False
+Spike-Encoded,Train,30,0.2235320535,False
+Spike-Encoded,Train,31,0.2216495436,False
+Spike-Encoded,Train,32,0.1971017926,False
+Spike-Encoded,Train,33,0.1810820797,False
+Spike-Encoded,Train,34,0.1729430133,False
+Spike-Encoded,Train,35,0.1708831391,False
+Spike-Encoded,Train,36,0.1613758094,False
+Spike-Encoded,Train,37,0.1584164763,False
+Spike-Encoded,Train,38,0.1548148812,False
+Spike-Encoded,Train,39,0.1442657188,False
+Spike-Encoded,Train,40,0.1344214388,False
+Spike-Encoded,Train,41,0.1280546114,False
+Spike-Encoded,Train,42,0.1134126285,False
+Spike-Encoded,Train,43,0.1063173878,False
+Spike-Encoded,Train,44,0.09745756301,False
+Spike-Encoded,Train,45,0.09411517481,False
+Spike-Encoded,Train,46,0.1012622161,False
+Spike-Encoded,Train,47,0.09746120927,False
+Spike-Encoded,Train,48,0.09007054826,False
+Spike-Encoded,Train,49,0.08781065649,False
+Spike-Encoded,Train,50,0.08425358647,False
+Spike-Encoded,Train,51,0.07671105096,False
+Spike-Encoded,Train,52,0.078953255,False
+Spike-Encoded,Train,53,0.05767196627,False
+Spike-Encoded,Train,54,0.0724130266,False
+Spike-Encoded,Train,55,0.06364794786,False
+Spike-Encoded,Train,56,0.06518602247,False
+Spike-Encoded,Train,57,0.05442385983,False
+Spike-Encoded,Train,58,0.05447516786,False
+Spike-Encoded,Train,59,0.06081207785,False
+Spike-Encoded,Train,60,0.05211973173,False
+Spike-Encoded,Train,61,0.06062571113,False
+Spike-Encoded,Train,62,0.04865196667,False
+Spike-Encoded,Train,63,0.04624255858,False
+Spike-Encoded,Train,64,0.04386899591,False
+Spike-Encoded,Train,65,0.03731547906,False
+Spike-Encoded,Train,66,0.04540507471,False
+Spike-Encoded,Train,67,0.03841260864,False
+Spike-Encoded,Train,68,0.03609322458,False
+Spike-Encoded,Train,69,0.03577518782,False
+Spike-Encoded,Train,70,0.03625900467,False
+Spike-Encoded,Train,71,0.0293901716,False
+Spike-Encoded,Train,72,0.03429741798,False
+Spike-Encoded,Train,73,0.02893064425,False
+Spike-Encoded,Train,74,0.0302041643,False
+Spike-Encoded,Train,75,0.02890208002,False
+Spike-Encoded,Train,76,0.03122281727,False
+Spike-Encoded,Train,77,0.0284268381,False
+Spike-Encoded,Train,78,0.02867754651,False
+Spike-Encoded,Train,79,0.02711427933,False
+Spike-Encoded,Train,80,0.02918143476,False
+Spike-Encoded,Train,81,0.02444579172,False
+Spike-Encoded,Train,82,0.02840965993,False
+Spike-Encoded,Train,83,0.02604482506,False
+Spike-Encoded,Train,84,0.02831848088,False
+Spike-Encoded,Train,85,0.02377611206,False
+Spike-Encoded,Train,86,0.0281309195,False
+Spike-Encoded,Train,87,0.02376072022,False
+Spike-Encoded,Train,88,0.02170763175,False
+Spike-Encoded,Train,89,0.0223746206,False
+Spike-Encoded,Train,90,0.02503363162,False
+Spike-Encoded,Train,91,0.02198449809,False
+Spike-Encoded,Train,92,0.02156080625,False
+Spike-Encoded,Train,93,0.0189709467,False
+Spike-Encoded,Train,94,0.02106509094,False
+Spike-Encoded,Train,95,0.02571426986,False
+Spike-Encoded,Train,96,0.02247430946,False
+Spike-Encoded,Train,97,0.02115282897,False
+Spike-Encoded,Train,98,0.02209289353,False
+Spike-Encoded,Train,99,0.0220240662,False
+Spike-Encoded,Train,100,0.02105882889,False
+Spike-Encoded,Val,1,3.396190138,False
+Spike-Encoded,Val,2,2.836995231,False
+Spike-Encoded,Val,3,2.454387344,False
+Spike-Encoded,Val,4,2.256258244,False
+Spike-Encoded,Val,5,2.238157383,False
+Spike-Encoded,Val,6,2.167016919,False
+Spike-Encoded,Val,7,1.74158814,False
+Spike-Encoded,Val,8,1.482974943,False
+Spike-Encoded,Val,9,1.18507413,False
+Spike-Encoded,Val,10,1.075341374,False
+Spike-Encoded,Val,11,0.8333238742,False
+Spike-Encoded,Val,12,0.772609747,False
+Spike-Encoded,Val,13,0.673813857,False
+Spike-Encoded,Val,14,0.6343339928,False
+Spike-Encoded,Val,15,0.5651937906,False
+Spike-Encoded,Val,16,0.5279602843,False
+Spike-Encoded,Val,17,0.4946962299,False
+Spike-Encoded,Val,18,0.4638888537,False
+Spike-Encoded,Val,19,0.4389811198,False
+Spike-Encoded,Val,20,0.4586984874,False
+Spike-Encoded,Val,21,0.4497015354,False
+Spike-Encoded,Val,22,0.434781584,False
+Spike-Encoded,Val,23,0.456379997,False
+Spike-Encoded,Val,24,0.4185988125,False
+Spike-Encoded,Val,25,0.3642782897,False
+Spike-Encoded,Val,26,0.3600431368,False
+Spike-Encoded,Val,27,0.3894352636,False
+Spike-Encoded,Val,28,0.3485774317,False
+Spike-Encoded,Val,29,0.3046273896,False
+Spike-Encoded,Val,30,0.3237571023,False
+Spike-Encoded,Val,31,0.3635030903,False
+Spike-Encoded,Val,32,0.3357477362,False
+Spike-Encoded,Val,33,0.3241503166,False
+Spike-Encoded,Val,34,0.3307501459,False
+Spike-Encoded,Val,35,0.3064190225,False
+Spike-Encoded,Val,36,0.2820490585,False
+Spike-Encoded,Val,37,0.2870092086,False
+Spike-Encoded,Val,38,0.2934256417,False
+Spike-Encoded,Val,39,0.2979797363,False
+Spike-Encoded,Val,40,0.2568313929,False
+Spike-Encoded,Val,41,0.3249811082,False
+Spike-Encoded,Val,42,0.2843030261,False
+Spike-Encoded,Val,43,0.2810560879,False
+Spike-Encoded,Val,44,0.2607954545,False
+Spike-Encoded,Val,45,0.2514981357,False
+Spike-Encoded,Val,46,0.2753656032,False
+Spike-Encoded,Val,47,0.2470435469,False
+Spike-Encoded,Val,48,0.2766128078,False
+Spike-Encoded,Val,49,0.268606607,False
+Spike-Encoded,Val,50,0.2724482549,False
+Spike-Encoded,Val,51,0.2767986876,False
+Spike-Encoded,Val,52,0.2731323771,False
+Spike-Encoded,Val,53,0.268775973,False
+Spike-Encoded,Val,54,0.2966854475,False
+Spike-Encoded,Val,55,0.2611790777,False
+Spike-Encoded,Val,56,0.2654633493,False
+Spike-Encoded,Val,57,0.2674400693,False
+Spike-Encoded,Val,58,0.2760737696,False
+Spike-Encoded,Val,59,0.279742643,False
+Spike-Encoded,Val,60,0.2720625972,False
+Spike-Encoded,Val,61,0.2564806125,False
+Spike-Encoded,Val,62,0.2840280244,False
+Spike-Encoded,Val,63,0.2610179026,False
+Spike-Encoded,Val,64,0.2760508352,False
+Spike-Encoded,Val,65,0.2567190195,False
+Spike-Encoded,Val,66,0.2689184148,False
+Spike-Encoded,Val,67,0.2504257136,False
+Spike-Encoded,Val,68,0.2660977979,False
+Spike-Encoded,Val,69,0.268721147,False
+Spike-Encoded,Val,70,0.2498046082,False
+Spike-Encoded,Val,71,0.252613388,False
+Spike-Encoded,Val,72,0.2554072392,False
+Spike-Encoded,Val,73,0.2678347633,False
+Spike-Encoded,Val,74,0.2776130709,False
+Spike-Encoded,Val,75,0.2717933027,False
+Spike-Encoded,Val,76,0.2669977097,False
+Spike-Encoded,Val,77,0.2663128741,False
+Spike-Encoded,Val,78,0.2702391257,False
+Spike-Encoded,Val,79,0.2601984726,False
+Spike-Encoded,Val,80,0.2727776598,False
+Spike-Encoded,Val,81,0.259312538,False
+Spike-Encoded,Val,82,0.2632971561,False
+Spike-Encoded,Val,83,0.2722751634,False
+Spike-Encoded,Val,84,0.2556857287,False
+Spike-Encoded,Val,85,0.2666232287,False
+Spike-Encoded,Val,86,0.2637706938,False
+Spike-Encoded,Val,87,0.2577867384,False
+Spike-Encoded,Val,88,0.257281547,False
+Spike-Encoded,Val,89,0.2625561206,False
+Spike-Encoded,Val,90,0.262607406,False
+Spike-Encoded,Val,91,0.2598140039,False
+Spike-Encoded,Val,92,0.261840239,False
+Spike-Encoded,Val,93,0.2624267842,False
+Spike-Encoded,Val,94,0.2657863072,False
+Spike-Encoded,Val,95,0.2620191434,False
+Spike-Encoded,Val,96,0.2596232361,False
+Spike-Encoded,Val,97,0.2607183547,False
+Spike-Encoded,Val,98,0.2626685469,False
+Spike-Encoded,Val,99,0.2608602416,False
+Spike-Encoded,Val,100,0.2614060703,False
+Spike-Encoded,Test,71,0.3083943421,True
+Raw Pressure,Train,1,3.557808152,False
+Raw Pressure,Train,2,3.555454256,False
+Raw Pressure,Train,3,3.532409192,False
+Raw Pressure,Train,4,3.243958357,False
+Raw Pressure,Train,5,2.965703089,False
+Raw Pressure,Train,6,2.869376522,False
+Raw Pressure,Train,7,2.805574197,False
+Raw Pressure,Train,8,2.739282091,False
+Raw Pressure,Train,9,2.617048172,False
+Raw Pressure,Train,10,2.467655127,False
+Raw Pressure,Train,11,2.390290722,False
+Raw Pressure,Train,12,2.399419498,False
+Raw Pressure,Train,13,2.31229889,False
+Raw Pressure,Train,14,2.299555746,False
+Raw Pressure,Train,15,2.174059492,False
+Raw Pressure,Train,16,2.262099772,False
+Raw Pressure,Train,17,2.269939268,False
+Raw Pressure,Train,18,2.160862129,False
+Raw Pressure,Train,19,2.130614781,False
+Raw Pressure,Train,20,2.141282141,False
+Raw Pressure,Train,21,2.079376413,False
+Raw Pressure,Train,22,2.118236716,False
+Raw Pressure,Train,23,2.098039447,False
+Raw Pressure,Train,24,2.077714808,False
+Raw Pressure,Train,25,1.905131573,False
+Raw Pressure,Train,26,1.868999304,False
+Raw Pressure,Train,27,1.962597475,False
+Raw Pressure,Train,28,2.032173839,False
+Raw Pressure,Train,29,1.932447059,False
+Raw Pressure,Train,30,2.133276503,False
+Raw Pressure,Train,31,2.000538831,False
+Raw Pressure,Train,32,1.954318617,False
+Raw Pressure,Train,33,1.983323248,False
+Raw Pressure,Train,34,2.011801187,False
+Raw Pressure,Train,35,2.101446545,False
+Raw Pressure,Train,36,2.393319334,False
+Raw Pressure,Train,37,2.324686196,False
+Raw Pressure,Train,38,2.221487455,False
+Raw Pressure,Train,39,2.147022481,False
+Raw Pressure,Train,40,2.013996732,False
+Raw Pressure,Train,41,2.207683137,False
+Raw Pressure,Train,42,2.246159337,False
+Raw Pressure,Train,43,2.263885306,False
+Raw Pressure,Train,44,2.057053173,False
+Raw Pressure,Train,45,2.104311732,False
+Raw Pressure,Train,46,2.123295455,False
+Raw Pressure,Train,47,2.061505682,False
+Raw Pressure,Train,48,2.126157381,False
+Raw Pressure,Train,49,2.140524083,False
+Raw Pressure,Train,50,2.356099077,False
+Raw Pressure,Train,51,1.905724939,False
+Raw Pressure,Train,52,1.862608165,False
+Raw Pressure,Train,53,1.864455843,False
+Raw Pressure,Train,54,1.807299941,False
+Raw Pressure,Train,55,2.149812659,False
+Raw Pressure,Train,56,2.010489622,False
+Raw Pressure,Train,57,1.840051383,False
+Raw Pressure,Train,58,1.886972221,False
+Raw Pressure,Train,59,1.974431275,False
+Raw Pressure,Train,60,1.868764132,False
+Raw Pressure,Train,61,1.845231694,False
+Raw Pressure,Train,62,1.795963662,False
+Raw Pressure,Train,63,1.833199139,False
+Raw Pressure,Train,64,1.992607476,False
+Raw Pressure,Train,65,1.903083329,False
+Raw Pressure,Train,66,1.914014668,False
+Raw Pressure,Train,67,1.81980447,False
+Raw Pressure,Train,68,1.755358411,False
+Raw Pressure,Train,69,1.756391502,False
+Raw Pressure,Train,70,1.787694588,False
+Raw Pressure,Train,71,1.781617796,False
+Raw Pressure,Train,72,1.752429992,False
+Raw Pressure,Train,73,1.794900133,False
+Raw Pressure,Train,74,1.76592123,False
+Raw Pressure,Train,75,1.738912301,False
+Raw Pressure,Train,76,1.75129236,False
+Raw Pressure,Train,77,1.770082038,False
+Raw Pressure,Train,78,1.728389705,False
+Raw Pressure,Train,79,1.686171947,False
+Raw Pressure,Train,80,1.710799078,False
+Raw Pressure,Train,81,1.663482723,False
+Raw Pressure,Train,82,1.670824878,False
+Raw Pressure,Train,83,1.671659395,False
+Raw Pressure,Train,84,1.658190805,False
+Raw Pressure,Train,85,1.650320327,False
+Raw Pressure,Train,86,1.596016748,False
+Raw Pressure,Train,87,1.620811833,False
+Raw Pressure,Train,88,1.631712554,False
+Raw Pressure,Train,89,1.622084626,False
+Raw Pressure,Train,90,1.622302586,False
+Raw Pressure,Train,91,1.621124007,False
+Raw Pressure,Train,92,1.612153945,False
+Raw Pressure,Train,93,1.608543925,False
+Raw Pressure,Train,94,1.58779007,False
+Raw Pressure,Train,95,1.619160374,False
+Raw Pressure,Train,96,1.607405388,False
+Raw Pressure,Train,97,1.57701074,False
+Raw Pressure,Train,98,1.60130468,False
+Raw Pressure,Train,99,1.587079118,False
+Raw Pressure,Train,100,1.588895814,False
+Raw Pressure,Val,1,3.55526921,False
+Raw Pressure,Val,2,3.554032231,False
+Raw Pressure,Val,3,3.449153434,False
+Raw Pressure,Val,4,2.94113146,False
+Raw Pressure,Val,5,2.892472859,False
+Raw Pressure,Val,6,2.83559211,False
+Raw Pressure,Val,7,2.620740962,False
+Raw Pressure,Val,8,2.520664443,False
+Raw Pressure,Val,9,2.545950648,False
+Raw Pressure,Val,10,2.206987072,False
+Raw Pressure,Val,11,2.231850945,False
+Raw Pressure,Val,12,2.253231111,False
+Raw Pressure,Val,13,2.11251691,False
+Raw Pressure,Val,14,2.080084255,False
+Raw Pressure,Val,15,2.066714861,False
+Raw Pressure,Val,16,1.970230908,False
+Raw Pressure,Val,17,1.833234197,False
+Raw Pressure,Val,18,1.823493304,False
+Raw Pressure,Val,19,1.780066288,False
+Raw Pressure,Val,20,1.813428369,False
+Raw Pressure,Val,21,1.694079537,False
+Raw Pressure,Val,22,1.764855798,False
+Raw Pressure,Val,23,1.716256701,False
+Raw Pressure,Val,24,1.672071475,False
+Raw Pressure,Val,25,1.665092858,False
+Raw Pressure,Val,26,1.824647846,False
+Raw Pressure,Val,27,1.783033178,False
+Raw Pressure,Val,28,1.745357101,False
+Raw Pressure,Val,29,1.643483242,False
+Raw Pressure,Val,30,1.892733064,False
+Raw Pressure,Val,31,1.795896746,False
+Raw Pressure,Val,32,1.501493697,False
+Raw Pressure,Val,33,1.953779846,False
+Raw Pressure,Val,34,1.605980177,False
+Raw Pressure,Val,35,2.157164418,False
+Raw Pressure,Val,36,2.171188658,False
+Raw Pressure,Val,37,1.978448618,False
+Raw Pressure,Val,38,1.926868997,False
+Raw Pressure,Val,39,1.768000774,False
+Raw Pressure,Val,40,1.720982037,False
+Raw Pressure,Val,41,2.212762108,False
+Raw Pressure,Val,42,1.950539435,False
+Raw Pressure,Val,43,1.904494935,False
+Raw Pressure,Val,44,1.864317421,False
+Raw Pressure,Val,45,1.765075948,False
+Raw Pressure,Val,46,2.05745337,False
+Raw Pressure,Val,47,1.870246973,False
+Raw Pressure,Val,48,1.821491562,False
+Raw Pressure,Val,49,2.264145783,False
+Raw Pressure,Val,50,1.759955864,False
+Raw Pressure,Val,51,1.542687196,False
+Raw Pressure,Val,52,1.538252397,False
+Raw Pressure,Val,53,1.620972314,False
+Raw Pressure,Val,54,1.497266999,False
+Raw Pressure,Val,55,2.126647262,False
+Raw Pressure,Val,56,1.566319057,False
+Raw Pressure,Val,57,1.692460916,False
+Raw Pressure,Val,58,1.503044888,False
+Raw Pressure,Val,59,1.619982329,False
+Raw Pressure,Val,60,1.558430355,False
+Raw Pressure,Val,61,1.662718775,False
+Raw Pressure,Val,62,1.487542275,False
+Raw Pressure,Val,63,1.960476064,False
+Raw Pressure,Val,64,1.771227023,False
+Raw Pressure,Val,65,1.590056395,False
+Raw Pressure,Val,66,1.664540741,False
+Raw Pressure,Val,67,1.549644781,False
+Raw Pressure,Val,68,1.539646429,False
+Raw Pressure,Val,69,1.485641361,False
+Raw Pressure,Val,70,1.615714413,False
+Raw Pressure,Val,71,1.473194416,False
+Raw Pressure,Val,72,1.926193647,False
+Raw Pressure,Val,73,1.535189648,False
+Raw Pressure,Val,74,1.537024296,False
+Raw Pressure,Val,75,1.52812035,False
+Raw Pressure,Val,76,1.592562272,False
+Raw Pressure,Val,77,1.450835468,False
+Raw Pressure,Val,78,1.434699781,False
+Raw Pressure,Val,79,1.416872865,False
+Raw Pressure,Val,80,1.385517599,False
+Raw Pressure,Val,81,1.431362136,False
+Raw Pressure,Val,82,1.378557689,False
+Raw Pressure,Val,83,1.455491579,False
+Raw Pressure,Val,84,1.378905404,False
+Raw Pressure,Val,85,1.347535342,False
+Raw Pressure,Val,86,1.359258003,False
+Raw Pressure,Val,87,1.339659852,False
+Raw Pressure,Val,88,1.377121593,False
+Raw Pressure,Val,89,1.333542702,False
+Raw Pressure,Val,90,1.350959124,False
+Raw Pressure,Val,91,1.343580158,False
+Raw Pressure,Val,92,1.337374442,False
+Raw Pressure,Val,93,1.357176572,False
+Raw Pressure,Val,94,1.375356805,False
+Raw Pressure,Val,95,1.356910554,False
+Raw Pressure,Val,96,1.336739042,False
+Raw Pressure,Val,97,1.345939762,False
+Raw Pressure,Val,98,1.3292156,False
+Raw Pressure,Val,99,1.32901606,False
+Raw Pressure,Val,100,1.330538927,False
+Raw Pressure,Test,96,1.332452842,True
