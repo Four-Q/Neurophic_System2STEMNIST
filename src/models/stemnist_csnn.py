@@ -1,34 +1,41 @@
-"""用于 STEMNIST 的无归一化多步卷积脉冲神经网络。"""
+"""轻量、无归一化的 STEMNIST 多步卷积脉冲神经网络。
+
+这一版保留 ``model_v2_with_lif.py`` 已验证可训练的三层卷积 LIF 主干，
+但不使用 BatchNorm、GroupNorm 或 LayerNorm。分类头联合使用完整 4x4
+空间发放图和分段时间发放率，在保留笔画位置与时序信息的同时，将默认
+参数量控制在约 10 万。
+"""
+
+from __future__ import annotations
 
 from numbers import Real
+from typing import Any
 
-import numpy as np
 import torch
 from torch import nn
-
-# SpikingJelly 0.0.0.0.14 的 CuPy 内核仍检查 np.int；该别名在
-# NumPy 2 中被删除。仅补回等价的 Python int，避免改动第三方包。
-if "int" not in np.__dict__:
-    setattr(np, "int", int)
-
 from spikingjelly.activation_based import functional, layer, neuron, surrogate
 
 
 class STEMNIST_CSNN(nn.Module):
-    """联合空间发放图与分段时间发放率完成 35 类识别。"""
+    """用于 35 类 STEMNIST 识别的轻量时空卷积 SNN。
+
+    输入形状为 ``[T, N, 1, 16, 16]``，输出 logits 形状为
+    ``[N, num_classes]``。``forward`` 和发放率字典与仓库中的
+    ``function_utils.py`` 兼容。
+    """
 
     EXPECTED_PARAMETER_COUNT = 97_027
 
     def __init__(
         self,
-        num_classes=35,
-        dropout=0.1,
-        tau=10.0,
-        logit_scale=1.0,
-        temporal_bins=4,
-        readout_features=56,
-        backend="torch",
-    ):
+        num_classes: int = 35,
+        dropout: float = 0.1,
+        tau: float = 10.0,
+        logit_scale: float = 1.0,
+        temporal_bins: int = 4,
+        readout_features: int = 56,
+        backend: str = "torch",
+    ) -> None:
         super().__init__()
 
         if not isinstance(num_classes, int) or num_classes <= 0:
@@ -54,9 +61,10 @@ class STEMNIST_CSNN(nn.Module):
         self.readout_feature_count = readout_features
         self.backend = backend
 
+        # [T,N,1,16,16] -> [T,N,16,16,16]
         self.conv1 = layer.Conv2d(
-            1,
-            16,
+            in_channels=1,
+            out_channels=16,
             kernel_size=3,
             padding=1,
             bias=True,
@@ -64,29 +72,39 @@ class STEMNIST_CSNN(nn.Module):
         )
         self.lif1 = self._make_lif(v_threshold=0.5)
 
+        # [T,N,16,16,16] -> [T,N,32,16,16] -> [T,N,32,8,8]
         self.conv2 = layer.Conv2d(
-            16,
-            32,
+            in_channels=16,
+            out_channels=32,
             kernel_size=3,
             padding=1,
             bias=True,
             step_mode="m",
         )
         self.lif2 = self._make_lif(v_threshold=0.75)
-        self.pool1 = layer.MaxPool2d(kernel_size=2, stride=2, step_mode="m")
+        self.pool1 = layer.MaxPool2d(
+            kernel_size=2,
+            stride=2,
+            step_mode="m",
+        )
 
+        # [T,N,32,8,8] -> [T,N,64,8,8] -> [T,N,64,4,4]
         self.conv3 = layer.Conv2d(
-            32,
-            64,
+            in_channels=32,
+            out_channels=64,
             kernel_size=3,
             padding=1,
             bias=True,
             step_mode="m",
         )
         self.lif3 = self._make_lif(v_threshold=1.0)
-        self.pool2 = layer.MaxPool2d(kernel_size=2, stride=2, step_mode="m")
+        self.pool2 = layer.MaxPool2d(
+            kernel_size=2,
+            stride=2,
+            step_mode="m",
+        )
 
-        # 完整 4x4 空间发放图保留字符位置，分段统计保留粗粒度时序。
+        # 64*4*4 空间发放图 + temporal_bins 个 64 维时间段发放率。
         summary_features = 64 * 4 * 4 + temporal_bins * 64
         self.readout_hidden = nn.Linear(summary_features, readout_features)
         self.readout_activation = nn.ReLU(inplace=True)
@@ -95,9 +113,15 @@ class STEMNIST_CSNN(nn.Module):
 
         self._initialize_weights()
         functional.set_step_mode(self, step_mode="m")
-        functional.set_backend(self, backend=backend, instance=neuron.LIFNode)
+        functional.set_backend(
+            self,
+            backend=backend,
+            instance=neuron.LIFNode,
+        )
 
-    def _make_lif(self, v_threshold):
+    def _make_lif(self, v_threshold: float) -> neuron.LIFNode:
+        """创建适合稀疏事件输入的 LIF 神经元。"""
+
         return neuron.LIFNode(
             tau=self.tau,
             decay_input=False,
@@ -108,7 +132,9 @@ class STEMNIST_CSNN(nn.Module):
             backend="torch",
         )
 
-    def _initialize_weights(self):
+    def _initialize_weights(self) -> None:
+        """使用稳定的小 logits 初始化。"""
+
         for convolution in (self.conv1, self.conv2, self.conv3):
             nn.init.kaiming_normal_(
                 convolution.weight,
@@ -117,26 +143,37 @@ class STEMNIST_CSNN(nn.Module):
             )
             nn.init.zeros_(convolution.bias)
 
-        nn.init.kaiming_uniform_(self.readout_hidden.weight, nonlinearity="relu")
+        nn.init.kaiming_uniform_(
+            self.readout_hidden.weight,
+            nonlinearity="relu",
+        )
         nn.init.zeros_(self.readout_hidden.bias)
 
-        # 小尺度分类层让初始交叉熵接近 log(35)，避免 logits 过早膨胀。
+        # 小尺度分类权重使初始交叉熵接近 log(35)，避免 logits 爆炸。
         nn.init.normal_(self.readout_classifier.weight, mean=0.0, std=0.02)
         nn.init.zeros_(self.readout_classifier.bias)
 
-    def _validate_inputs(self, inputs):
+    def _validate_inputs(self, inputs: torch.Tensor) -> None:
+        """检查多步输入的维数、空间形状和时间长度。"""
+
         if inputs.ndim != 5:
             raise ValueError("输入必须是 [T,N,C,H,W] 五维张量。")
         if inputs.shape[0] < self.temporal_bins:
             raise ValueError(
-                f"时间步数 {inputs.shape[0]} 小于 temporal_bins={self.temporal_bins}。"
+                f"输入时间步数 {inputs.shape[0]} 小于 temporal_bins="
+                f"{self.temporal_bins}。"
             )
         if inputs.shape[1] <= 0:
             raise ValueError("batch 维不能为空。")
         if tuple(inputs.shape[2:]) != (1, 16, 16):
             raise ValueError("输入的通道和空间形状必须是 [1,16,16]。")
 
-    def _encode(self, inputs):
+    def _encode(
+        self,
+        inputs: torch.Tensor,
+    ) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:
+        """提取形状为 [T,N,64,4,4] 的脉冲特征。"""
+
         self._validate_inputs(inputs)
 
         hidden1_spikes = self.lif1(self.conv1(inputs))
@@ -152,9 +189,15 @@ class STEMNIST_CSNN(nn.Module):
         }
         return feature_spikes, firing_rates
 
-    def _spatiotemporal_summary(self, feature_spikes):
+    def _spatiotemporal_summary(
+        self,
+        feature_spikes: torch.Tensor,
+    ) -> torch.Tensor:
+        """保留空间发放图，并加入低成本的分段时间统计。"""
+
         float_spikes = feature_spikes.float()
         spatial_rates = float_spikes.mean(dim=0).flatten(start_dim=1)
+
         temporal_rates = torch.cat(
             [
                 chunk.mean(dim=(0, 3, 4))
@@ -168,7 +211,9 @@ class STEMNIST_CSNN(nn.Module):
         )
         return torch.cat((spatial_rates, temporal_rates), dim=1)
 
-    def _sequence_summary(self, feature_spikes):
+    def _sequence_summary(self, feature_spikes: torch.Tensor) -> torch.Tensor:
+        """构造与主分类头维数一致的逐时间步特征。"""
+
         spatial_features = feature_spikes.float().flatten(start_dim=2)
         global_features = feature_spikes.float().mean(dim=(-2, -1))
         repeated_temporal_features = global_features.repeat(
@@ -176,36 +221,77 @@ class STEMNIST_CSNN(nn.Module):
             1,
             self.temporal_bins,
         )
-        return torch.cat((spatial_features, repeated_temporal_features), dim=2)
+        return torch.cat(
+            (spatial_features, repeated_temporal_features),
+            dim=2,
+        )
 
-    def _classify(self, summary):
+    def _classify(self, summary: torch.Tensor) -> torch.Tensor:
+        """使用无归一化的小型模拟读出头分类。"""
+
         hidden = self.readout_hidden(summary)
         hidden = self.readout_activation(hidden)
         hidden = self.readout_dropout(hidden)
         return self.readout_classifier(hidden) * self.logit_scale
 
-    def forward_sequence(self, inputs):
-        feature_spikes, firing_rates = self._encode(inputs)
-        currents = self._classify(self._sequence_summary(feature_spikes))
-        return currents, firing_rates
+    def forward_sequence(
+        self,
+        inputs: torch.Tensor,
+    ) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:
+        """返回逐时间步模拟分类电流和平均发放率。"""
 
-    def forward(self, inputs, return_firing_rates=False):
+        feature_spikes, firing_rates = self._encode(inputs)
+        output_currents = self._classify(self._sequence_summary(feature_spikes))
+        return output_currents, firing_rates
+
+    def forward(
+        self,
+        inputs: torch.Tensor,
+        return_firing_rates: bool = False,
+    ) -> torch.Tensor | tuple[torch.Tensor, dict[str, torch.Tensor]]:
+        """返回时空发放率分类 logits。"""
+
         feature_spikes, firing_rates = self._encode(inputs)
         logits = self._classify(self._spatiotemporal_summary(feature_spikes))
+
         if return_firing_rates:
             return logits, firing_rates
         return logits
 
-    def parameter_count(self):
+    def parameter_count(self) -> int:
+        """返回所有可训练参数的数量。"""
+
         return sum(parameter.numel() for parameter in self.parameters())
 
-    def extra_repr(self):
+    def extra_repr(self) -> str:
         return (
             f"num_classes={self.num_classes}, "
             f"dropout={self.dropout_probability}, "
             f"tau={self.tau}, logit_scale={self.logit_scale}, "
             f"temporal_bins={self.temporal_bins}, "
             f"readout_features={self.readout_feature_count}, "
-            f"backend={self.backend!r}, normalization='none', "
+            f"backend={self.backend!r}, "
+            "normalization='none', "
             "readout='spatiotemporal_rate'"
         )
+
+
+def build_stemnist_csnn(**kwargs: Any) -> STEMNIST_CSNN:
+    """创建第四版模型，并检查默认配置的参数量。"""
+
+    model = STEMNIST_CSNN(**kwargs)
+    parameter_count = model.parameter_count()
+
+    if (
+        model.num_classes == 35
+        and model.temporal_bins == 4
+        and model.readout_feature_count == 56
+        and parameter_count != model.EXPECTED_PARAMETER_COUNT
+    ):
+        raise RuntimeError(
+            f"模型参数量应为 {model.EXPECTED_PARAMETER_COUNT}，"
+            f"实际为 {parameter_count}。"
+        )
+
+    return model
+

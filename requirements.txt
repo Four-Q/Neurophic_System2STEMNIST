@@ -1,11 +1,13 @@
-h5py==3.14.0
+h5py
 ipykernel
 jupyterlab
-matplotlib==3.10.5
-numpy==1.26.4
-tqdm==4.67.1
-torch==2.8.0
-spikingjelly==0.0.0.0.14
+matplotlib
+numba
+numpy
+tqdm
+torch
+spikingjelly
+pandas
 
-# CUDA 12.x 下为 SpikingJelly 多步 LIF 提供 CuPy 加速。
+# CUDA 12.x 下为 SpikingJelly 多步 LIF 提供 CuPy 加速后端。
 cupy-cuda12x

@@ -23,11 +23,22 @@ def save_history_csv(history, path):
     if len(set(lengths.values())) != 1:
         raise ValueError(f"训练历史各列长度不一致：{lengths}")
 
-    rows = [
-        {key: history[key][index] for key in keys}
-        for index in range(lengths[keys[0]])
-    ]
-    write_dict_rows(path, keys, rows)
+    row_count = lengths[keys[0]]
+    has_epoch = "epoch" in history
+    fieldnames = keys if has_epoch else ["epoch", *keys]
+    rows = []
+    for index in range(row_count):
+        row = {key: history[key][index] for key in keys}
+        if not has_epoch:
+            row = {"epoch": index + 1, **row}
+        rows.append(row)
+    write_dict_rows(path, fieldnames, rows)
+
+
+def history_epochs(history):
+    if "epoch" in history:
+        return history["epoch"]
+    return list(range(1, len(history["train_loss"]) + 1))
 
 
 def save_run_config(config, path):
@@ -163,7 +174,7 @@ def finish_figure(figure, path, dpi=300):
 
 
 def plot_training_history(history, path):
-    epochs = history["epoch"]
+    epochs = history_epochs(history)
     figure, axes = plt.subplots(1, 2, figsize=(14, 5))
 
     axes[0].plot(epochs, history["train_loss"], label="Train", color="tab:red")
@@ -246,7 +257,7 @@ def plot_per_class_accuracy(per_class_rows, path):
 
 
 def plot_training_and_test_summary(history, test_metrics, path):
-    epochs = history["epoch"]
+    epochs = history_epochs(history)
     best_index = int(np.argmax(history["val_accuracy"]))
     best_val_accuracy = history["val_accuracy"][best_index]
     test_accuracy = test_metrics["test_accuracy"]
@@ -300,4 +311,3 @@ def plot_training_and_test_summary(history, test_metrics, path):
     figure.suptitle("STEMNIST_CSNN Training and Final Test")
     figure.tight_layout()
     finish_figure(figure, path)
-

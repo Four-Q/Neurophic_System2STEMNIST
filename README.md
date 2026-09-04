@@ -27,9 +27,9 @@ STEMNIST_Ready/
 │   ├── train/
 │   │   ├── pressure_train.ipynb
 │   │   └── spike_train.ipynb
-│   ├── experiment.py
+│   ├── evaluation.py
+│   ├── function_utils.py
 │   ├── reporting.py
-│   └── training.py
 └── tests/
     └── smoke_test.py
 ```
@@ -52,7 +52,7 @@ jupyter lab
 
 如果镜像已预装匹配的 CUDA 版 PyTorch，可直接安装 `requirements.txt`，但应先确认 `torch.cuda.is_available()` 为 `True`。
 
-`requirements.txt` 将 NumPy 固定为 `1.26.4`，以兼容 SpikingJelly `0.0.0.0.14` 的 CuPy 内核。模型入口同时包含针对现有 NumPy 2 环境的最小兼容处理，因此已经建好的远程环境也可以直接运行；重新创建环境时仍建议使用锁定版本。
+训练 Notebook 的环境初始化单元与 `STEMNIST_Classify` 保持一致，并在导入 SpikingJelly 前恢复旧版 CuPy 内核仍会使用的 `np.int` 别名，可兼容当前远程环境中的 NumPy 版本。
 
 ## 运行顺序
 
